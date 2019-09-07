@@ -18,9 +18,7 @@ http.createServer(function (request, response) {
         list.push(q.pathname.split("/"));
         classFile = list[0][2]
         filename = classFile + ".csv"
-
     }
-
 
     fs.readFile(filename, function (err, data) {
         if (err) {
@@ -32,21 +30,19 @@ http.createServer(function (request, response) {
         return response.end();
     });
 
-
     request.on('data', function (request) {
         store = JSON.parse(request);
         file = store.subject.replace(" ","-").toLowerCase();
-        fs.appendFile(file + '.csv', store.name + "," + store.email + "," + store.course + "\n", function (err) {
+        fs.appendFile(file + '.csv', store.name + "," + store.email + "," + store.course + "\r\n", function (err) {
             if (err) throw err;
-            console.log('saved!');
+            console.log(file+' is saved!');
         });
         // console.log(store)
     });
 
     request.on('end', function () {
         // console.log(store);
-
     });
+    
 }).listen(port);
-
 console.log("Initializing server port " + port);
