@@ -35,25 +35,17 @@ http.createServer(function (request, response) {
 
     request.on('data', function (request) {
         store = JSON.parse(request);
+        file = store.subject.replace(" ","-").toLowerCase();
+        fs.appendFile(file + '.csv', store.name + "," + store.email + "," + store.course + "\n", function (err) {
+            if (err) throw err;
+            console.log('saved!');
+        });
         // console.log(store)
     });
 
     request.on('end', function () {
         // console.log(store);
 
-        if (fs.existsSync(store.subject + '.csv')) {
-
-            fs.appendFile(store.subject + '.csv', store.name + "," + store.email + "," + store.course + "\n", function (err) {
-                if (err) throw err;
-                console.log('saved!');
-            });
-        } else {
-            fs.writeFile(store.subject.replace(" ", "-").toLowerCase() + '.csv', store.name + "," + store.email + "," + store.course + "\n", function (err) {
-                if (err) throw err;
-                console.log(store.subject + ' is created!');
-            });
-            // response.end("Hi!")
-        }
     });
 }).listen(port);
 
