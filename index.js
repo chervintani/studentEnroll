@@ -3,7 +3,7 @@ var http = require("http");
 var fs = require('fs');
 var url = require('url');
 // var csv = require('fast-csv');
-
+var enroll = require('./enroll');
 http.createServer(function (request, response) {
 
     response.setHeader("Content-Type", "text/json");
@@ -14,12 +14,20 @@ http.createServer(function (request, response) {
     var q = url.parse(request.url, true);
     var filename = "." + q.pathname;
     if (q.pathname == "/") {
-        filename = "studentEnroll.html"
+        filename = "index.html"
     } else if (q.pathname.indexOf("/class") >= 0) {
         list.push(q.pathname.split("/"));
         classFile = list[0][2]
-        filename = classFile + ".csv"
+        filename = "index.html";
+        // filename = classFile + ".csv"
+
+        fs.writeFile('employee.csv', '', function () { console.log('done') })
+        //NEXT THINGS IS TO APPEND THE CLASSFILE CSV TO THE EMPLOYEE CSV
+        //I STOPPED HERE
+    } else if (q.pathname == "/enroll") {
+        filename = "studentEnroll.html"
     }
+
 
 
     fs.readFile(filename, function (err, data) {
@@ -31,24 +39,26 @@ http.createServer(function (request, response) {
         response.write(data);
         return response.end();
     });
-
     request.on('data', function (request) {
         store = JSON.parse(request);
-        file = store.subject.replace(" ","-").toLowerCase();
-        
+        file = store.subject.replace(" ", "-").toLowerCase();
+
         fs.appendFile(file + '.csv', store.name + "," + store.email + "," + store.course + "\n", function (err) {
             if (err) throw err;
-            console.log(file+' is saved!');
+            console.log(file + ' is saved!');
         });
+
+
         // fs.createWriteStream(file+'.csv');
         // csv.write ([
         //     [store.name,store.email,store.course]
         // ])
 
     });
-    console.log(store);
     request.on('end', function () {
 
-    });
+    })
+
+
 }).listen(port);
 console.log("Initializing server port " + port);
