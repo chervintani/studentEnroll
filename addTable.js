@@ -13,7 +13,7 @@ module.exports = function (request, response, list,q) {
                 ".imgbox {display: grid;height: 100%;}" +
                 ".center-fit {" +
                 "max-width: 100%;max-height: 100vh;margin: auto;}</style>" +
-                "<div class='imgbox'><img class='center-fit' src='https://previews.dropbox.com/p/thumb/AAiVYsgTzha2dhORKrk8ShfvBmQrRzGtro5vPd9hCLK2XYJgeVH06IJbxCfrsuhh5XbB0N5SFU-7vj0xk9PCb3KNvwO4_J_2w3zX_0UdkGkEYdUAn4EOkQBo-WmYHOFsJaLr_4ckXK_ZEPcMy6-gqmAdrrzyXa63uqnYZgsvYDOePie1X0MSxu-qrukHOU9Q4HbJyt1bpQhmiXFWdnxgEndNUzi1CYyfO4WX0qH3rdGZtaE3vEp_uEoIb67W-F7VV_TyJv9lI-kCtv4-XqBYOc8IG-b8L_e-DjWUCA3PoIYPt7ZanuxDte_Wycd8Af4RfmYsxBgMGM1z-vaT_-i7S94e2MyRc8FyY-VLpjriOaGYAA/p.jpeg?fv_content=true&size_mode=5'></html>");
+                "<div class='imgbox'><img class='center-fit' src='https://i.imgur.com/a4tdisi.jpg'></html>");
         }
         var info = "<tbody>";
         var content = "</tbody></table></body></html>";
@@ -23,9 +23,12 @@ module.exports = function (request, response, list,q) {
             "<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>" +
             "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>" +
             "<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>" +
-            "<style>table {border-collapse: collapse;border-spacing: 0;width: 100%;border: 1px solid #ddd;}" +
+            "<style>body{background-image: url('https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'); background-repeat:no-repeat;"+
+
+            "background-size:cover;}table {border-collapse: collapse;border-spacing: 0;width: 100%;border: 1px solid #ddd;background-image: url('https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'); background-repeat:no-repeat; background-size:cover;}" +
             "th, td {text-align: left;padding: 16px;}" +
-            "tr:nth-child(even) {background-color: #f2f2f2}" +
+            "tbody {background-color: #f2f2f2}" +
+            // "tr:nth-child(even) {background-color: #f2f2f2}" +
             "</style>" +
             "<title>Document</title></head><body style='font-style: 'Comfortaa''><div class='jumbotron text-center'>" +
             "<h1 class='text-center'>" + classFile.toUpperCase() + " Class</h1><br>" +

@@ -9,257 +9,295 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <style>
     /* STRUCTURE */
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column; 
-  justify-content: center;
-  width: 100%;
-  min-height: 100%;
-  padding: 20px;
-  padding-top: 80px;
-  color: orange;
-  text-shadow: 2px 2px 3px #000000;
-}
+    .wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      min-height: 100%;
+      padding: 20px;
+      padding-top: 80px;
+      color: orange;
+      text-shadow: 2px 2px 3px #000000;
+    }
 
-#formContent {
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  background: #fff;
-  padding: 30px;
-  width: 90%;
-  max-width: 450px;
-  position: relative;
-  padding: 0px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  text-align: center;
-}
+    #formContent {
+      -webkit-border-radius: 10px 10px 10px 10px;
+      border-radius: 10px 10px 10px 10px;
+      background: #fff;
+      padding: 30px;
+      width: 90%;
+      max-width: 450px;
+      position: relative;
+      padding: 0px;
+      -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
 
-#formFooter {
-  background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
-  padding: 25px;
-  text-align: center;
-  -webkit-border-radius: 0 0 10px 10px;
-  border-radius: 0 0 10px 10px;
-}
-
-
-
-/* TABS */
-
-h2.inactive {
-  color: #cccccc;
-  font-family: 'Comfortaa';
-}
-
-h2.active {
-  color: #0d0d0d;
-  border-bottom: 2px solid #fcac00;
-  font-family: 'Comfortaa';
-}
-
-body {
-  font-family: 'Comfortaa';
-  background-image: url("https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
-  height: 100%; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    #formFooter {
+      background-color: #f6f6f6;
+      border-top: 1px solid #dce8f1;
+      padding: 25px;
+      text-align: center;
+      -webkit-border-radius: 0 0 10px 10px;
+      border-radius: 0 0 10px 10px;
+    }
 
 
 
+    /* TABS */
 
-/* FORM TYPOGRAPHY*/
+    h2.inactive {
+      color: #cccccc;
+      font-family: 'Comfortaa';
+    }
 
-input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #ffae00;
-  
-  border: none;
-  color: white;
-  padding: 15px 80px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
+    h2.active {
+      color: #0d0d0d;
+      border-bottom: 2px solid #fcac00;
+      font-family: 'Comfortaa';
+    }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #fc8f00
-}
-
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
-  -moz-transform: scale(0.95);
-  -webkit-transform: scale(0.95);
-  -o-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
-  
-}
-
-input[type=text] {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-input[type=text]:focus {
-  background-color: #fff;
-  border-bottom: 2px solid #fcac00
-}
-
-input[type=text]:placeholder {
-  color: #cccccc;
-}
+    body {
+      font-family: 'Comfortaa';
+      background-image: url("https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
 
 
-/* ANIMATIONS */
 
-/* Simple CSS3 Fade-in-down Animation */
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
+    /* FORM TYPOGRAPHY*/
 
-@-webkit-keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
+    input[type=button],
+    input[type=submit],
+    input[type=reset] {
+      background-color: #ffae00;
 
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
+      border: none;
+      color: white;
+      padding: 15px 80px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 13px;
+      -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+      box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+      -webkit-border-radius: 5px 5px 5px 5px;
+      border-radius: 5px 5px 5px 5px;
+      margin: 5px 20px 40px 20px;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
 
-/* Simple CSS3 Fade-in Animation */
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    input[type=button]:hover,
+    input[type=submit]:hover,
+    input[type=reset]:hover {
+      background-color: #fc8f00
+    }
 
-.fadeIn {
-  opacity:0;
-  -webkit-animation:fadeIn ease-in 1;
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
+    input[type=button]:active,
+    input[type=submit]:active,
+    input[type=reset]:active {
+      -moz-transform: scale(0.95);
+      -webkit-transform: scale(0.95);
+      -o-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+      transform: scale(0.95);
 
-  -webkit-animation-fill-mode:forwards;
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
+    }
 
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
-}
+    input[type=text] {
+      background-color: #f6f6f6;
+      border: none;
+      color: #0d0d0d;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 5px;
+      width: 85%;
+      border: 2px solid #f6f6f6;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+      -webkit-border-radius: 5px 5px 5px 5px;
+      border-radius: 5px 5px 5px 5px;
+    }
 
-.fadeIn.first {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
+    input[type=text]:focus {
+      background-color: #fff;
+      border-bottom: 2px solid #fcac00
+    }
 
-.fadeIn.second {
-  -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
-}
-
-.fadeIn.third {
-  -webkit-animation-delay: 0.8s;
-  -moz-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
-
-.fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
-/* Simple CSS3 Fade-in Animation */
-.underlineHover:after {
-  display: block;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 2px;
-  background-color: #56baed;
-  content: "";
-  transition: width 0.2s;
-}
-
-.underlineHover:hover {
-  color: #0d0d0d;
-}
-
-.underlineHover:hover:after{
-  width: 100%;
-}
+    input[type=text]:placeholder {
+      color: #cccccc;
+    }
 
 
 
-/* OTHERS */
+    /* ANIMATIONS */
 
-*:focus {
-    outline: none;
-} 
+    /* Simple CSS3 Fade-in-down Animation */
+    .fadeInDown {
+      -webkit-animation-name: fadeInDown;
+      animation-name: fadeInDown;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
 
-#icon {
-  width:60%;
-}
+    @-webkit-keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+      }
 
-    </style>
+      100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+
+    /* Simple CSS3 Fade-in Animation */
+    @-webkit-keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @-moz-keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fadeIn {
+      opacity: 0;
+      -webkit-animation: fadeIn ease-in 1;
+      -moz-animation: fadeIn ease-in 1;
+      animation: fadeIn ease-in 1;
+
+      -webkit-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+
+      -webkit-animation-duration: 1s;
+      -moz-animation-duration: 1s;
+      animation-duration: 1s;
+    }
+
+    .fadeIn.first {
+      -webkit-animation-delay: 0.4s;
+      -moz-animation-delay: 0.4s;
+      animation-delay: 0.4s;
+    }
+
+    .fadeIn.second {
+      -webkit-animation-delay: 0.6s;
+      -moz-animation-delay: 0.6s;
+      animation-delay: 0.6s;
+    }
+
+    .fadeIn.third {
+      -webkit-animation-delay: 0.8s;
+      -moz-animation-delay: 0.8s;
+      animation-delay: 0.8s;
+    }
+
+    .fadeIn.fourth {
+      -webkit-animation-delay: 1s;
+      -moz-animation-delay: 1s;
+      animation-delay: 1s;
+    }
+
+    /* Simple CSS3 Fade-in Animation */
+    .underlineHover:after {
+      display: block;
+      left: 0;
+      bottom: -10px;
+      width: 0;
+      height: 2px;
+      background-color: #56baed;
+      content: "";
+      transition: width 0.2s;
+    }
+
+    .underlineHover:hover {
+      color: #0d0d0d;
+    }
+
+    .underlineHover:hover:after {
+      width: 100%;
+    }
+
+
+
+    /* OTHERS */
+
+    *:focus {
+      outline: none;
+    }
+
+    #icon {
+      width: 60%;
+    }
+
+    .swal2-container {
+      zoom: 1.5;
+    }
+  </style>
 </head>
 
 <body class="bg">
@@ -274,39 +312,71 @@ input[type=text]:placeholder {
 
       <!-- Login Form -->
       <form method="POST" action="">
-        <input type="text" id="class" class="fadeIn second" name="login" placeholder="Class">
-        <input type="text" id="name" class="fadeIn third" name="login" placeholder="Name">
-        <input type="text" id="email" class="fadeIn third" name="login" placeholder="Email">
-        <input type="text" id="course" class="fadeIn third" name="login" placeholder="Course & Year">
+        <input type="text" id="class" class="fadeIn second" name="login" placeholder="Class" required>
+        <input type="text" id="name" class="fadeIn third" name="login" placeholder="Name" required>
+        <input type="text" id="email" class="fadeIn third" name="login" placeholder="Email" required>
+        <input type="text" id="course" class="fadeIn third" name="login" placeholder="Course & Year" required>
         <input type="submit" id="button" class="fadeIn fourth" value="Enroll">
       </form>
 
     </div>
   </div>
 </body>
-<div>
-
-</div>
 
 </html>
-
 <script>
 
   $('#button').on("click", function (e) {
     e.preventDefault();
+    var boolean = true;
 
-    $.ajax({
-      type: "post",
-      url: "http://localhost:8081",
-      // dataType: "jsonp",
-      // contentType: "application/json; charset=UTF-8",
-      crossDomain: true,
-      data: JSON.stringify({ name: $('#name').val(), subject: $('#class').val(), email: $('#email').val(), course: $('#course').val() }),
+    //this syntax is looping all the input fields
+    $('input[name=login]').each(function () {
+      //check if the current input field is empty
+      if ($(this).val() == "") {
+        //if there is an empty field change the value of the temporary variable to false;
+        boolean = false;
+      }
     })
-    // $("input").val("");
-    alert($('#name').val() + " is enrolled to class " + $('#class').val() + "!");
-    $('input[type="text"]:not(#button input[type="submit"])').val("");
+    if (boolean == true) {
+      var regex = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+      if (!regex.test($('#email').val())) {
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Email format inputted is not valid!',
+          confirmButtonColor: '#fcac00',
+        })
+        return false;
 
+      } else {
+        $.ajax({
+          type: "post",
+          url: "http://localhost:8081",
+          // dataType: "jsonp",
+          // contentType: "application/json; charset=UTF-8",
+          crossDomain: true,
+          data: JSON.stringify({ name: $('#name').val(), subject: $('#class').val(), email: $('#email').val(), course: $('#course').val() }),
+          success: function (data) {
+            Swal.fire({
+              type: 'success',
+              title: 'Success!',
+              text: $('#name').val() + " is enrolled to class " + $('#class').val() + "!",
+              confirmButtonColor: '#fcac00',
+            })
+            $('input[type="text"]:not(#button input[type="submit"])').val("");
+          }
+        });
+      }
+    } else {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Please input all the fields!',
+        confirmButtonColor: '#fcac00',
+      })
+    }
   });
+
 
 </script>
