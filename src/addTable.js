@@ -1,13 +1,14 @@
-module.exports = function (request, response, list,url) {
+module.exports = function (response, list, url) {
     var fs = require('fs');
     var classFile = "";
 
     list.push(url.split("/"));
-    classFile = list[0][2];
+    // classFile = list[0][2];
+    classFile = url;
     filename = classFile + '.csv';
 
     // response.sendFile(path.join(__dirname, filename));
-    fs.readFile(filename, 'utf8', function (err, data) {
+    fs.readFile("./class/" + url + '.csv', 'utf8', function (err, data) {
         if (err) {
             // response.writeHead(404, { 'Content-Type': 'text/html' });
             return this.end("<html><style> * {" +
@@ -35,20 +36,17 @@ module.exports = function (request, response, list,url) {
             "<title>" + classFile.toUpperCase() + " Class List</title></head><body style='font-style: 'Comfortaa''><div class='jumbotron text-center'>" +
             "<h1 class='text-center'>" + classFile.toUpperCase() + " Class</h1><br>" +
             "<table class='table'><tr scope='row'><thead class='thead-dark'><td scope='col'><b>Name</b></td>" +
-            "<td scope='col'><b>Email</b></td><td scope='col'><b>Course</b></td><td scope='col'><b>Year</b></td></tr></thead></div></body>" +
-            "<script>$(document).ready(function(){" +
-            "$('.table tr:last').remove();" +
-            "})</script>";
+            "<td scope='col'><b>Email</b></td><td scope='col'><b>Course</b></td><td scope='col'><b>Year</b></td></tr></thead></div></body>";
 
         var a = data.split('\n').join(',');
         var b = a.split(',');
         var counter = 0;
-
+        var scripts = "<script>$('.table tr:last').remove();</script>";
         for (var i = 0; i < b.length / 4; ++i) {
             info += "<tr><td>" + b[counter] + "</td><td>" + b[counter + 1] + "</td><td>" + b[counter + 2] + "</td><td>" + b[counter + 3] + "</td></tr>";
             counter += 4;
         }
-        table += info + content;
+        table += info + content+scripts;
 
         console.log(b);
         response.writeHead(200, { 'Content-Type': 'text/html' });

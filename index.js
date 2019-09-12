@@ -1,8 +1,6 @@
 
-var fs = require('fs');
-var url = require('url');
-var addtable = require('./addTable');
-var addfile = require('./addFile');
+var addtable = require('./src/addTable');
+var addfile = require('./src/addFile');
 const express = require('express');
 const app = express();
 const port = 8080;
@@ -16,21 +14,17 @@ app.all('/enroll', function (req, res) {
     addfile(req)
 });
 
-app.get('/', function (req, res, next) {
-    var err = new Error("Something went wrong ha");
-   next(err);
-   return false;
+app.all('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'view/studentEnroll.html'));
 });
 
-app.all('/class/chervintani', function (req, res) {
+
+
+app.all('/class/:id', function (req, res) {
     var list = [];
-    var url = '/class/chervintani';
-    addtable(req,res,list,url);
-    // res.send(path.join('Hello!'));
-    // addtable(req, res, list);
+    var data = req.params.id;
+    addtable(res, list, data);
 });
-
-
 
 http.listen(port, () => {
     console.log('listening on port ' + port);
