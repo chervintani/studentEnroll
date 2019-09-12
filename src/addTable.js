@@ -11,12 +11,20 @@ module.exports = function (response, list, url) {
     fs.readFile("./class/" + url + '.csv', 'utf8', function (err, data) {
         if (err) {
             // response.writeHead(404, { 'Content-Type': 'text/html' });
-            return this.end("<html><style> * {" +
-                "margin: 0;padding: 0;}" +
+            return response.send("<html><head>" +
+                "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>" +
+                "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>" +
+                "<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>" +
+                "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>" +
+                "<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>" +
+                "<style>body{background-image: url('https://sitechecker.pro/wp-content/uploads/2017/12/404.png'); background-repeat:no-repeat;" +
+                "background-size:cover;}" +
+                "* {" +
+                "font-family:'Comfortaa' margin: 0;padding: 0;}" +
                 ".imgbox {display: grid;height: 100%;}" +
                 ".center-fit {" +
-                "max-width: 100%;max-height: 100vh;margin: auto;}</style>" +
-                "<div class='imgbox'><img class='center-fit' src='https://i.imgur.com/a4tdisi.jpg'></html>");
+                "max-width: 100%;max-height: 100vh;margin: auto;}</style></head>" +
+                "<div class='imgbox'><center><br><h1 style='font-family:'Comfortaa'>Class list not found</h1></center></html>");
         }
         var info = "<tbody>";
         var content = "</tbody></table></body></html>";
@@ -46,7 +54,7 @@ module.exports = function (response, list, url) {
             info += "<tr><td>" + b[counter] + "</td><td>" + b[counter + 1] + "</td><td>" + b[counter + 2] + "</td><td>" + b[counter + 3] + "</td></tr>";
             counter += 4;
         }
-        table += info + content+scripts;
+        table += info + content + scripts;
 
         console.log(b);
         response.writeHead(200, { 'Content-Type': 'text/html' });

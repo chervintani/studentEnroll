@@ -7,8 +7,6 @@ const port = 8080;
 const path = require('path');
 const http = require('http').Server(app);
 
-
-
 app.all('/enroll', function (req, res) {
     res.sendFile(path.join(__dirname, 'view/studentEnroll.html'));
     addfile(req)
@@ -17,8 +15,6 @@ app.all('/enroll', function (req, res) {
 app.all('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'view/studentEnroll.html'));
 });
-
-
 
 app.all('/class/:id', function (req, res) {
     var list = [];
