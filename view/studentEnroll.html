@@ -316,6 +316,7 @@
         <input type="text" id="name" class="fadeIn third" name="login" placeholder="Name" required>
         <input type="text" id="email" class="fadeIn third" name="login" placeholder="Email" required>
         <input type="text" id="course" class="fadeIn third" name="login" placeholder="Course & Year" required>
+        <input type="text" id="year" class="fadeIn third" name="login" placeholder="Year" required>
         <input type="submit" id="button" class="fadeIn fourth" value="Enroll">
       </form>
 
@@ -338,6 +339,11 @@
         boolean = false;
       }
     })
+
+    // if ($.isNumeric($('#year'))) {
+
+    // }
+
     if (boolean == true) {
       var regex = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
       if (!regex.test($('#email').val())) {
@@ -349,14 +355,15 @@
         })
         return false;
 
-      } else {
+      }
+      else {
         $.ajax({
           type: "post",
-          url: "http://localhost:8081",
+          url: "http://localhost:8080/enroll",
           // dataType: "jsonp",
           // contentType: "application/json; charset=UTF-8",
           crossDomain: true,
-          data: JSON.stringify({ name: $('#name').val(), subject: $('#class').val(), email: $('#email').val(), course: $('#course').val() }),
+          data: JSON.stringify({ name: $('#name').val(), subject: $('#class').val(), email: $('#email').val(), course: $('#course').val().toUpperCase(), year: $('#year').val() }),
           success: function (data) {
             Swal.fire({
               type: 'success',
